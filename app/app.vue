@@ -5,6 +5,6 @@
 </template>
 
 <script setup lang="ts">
-const a = 'b'
+let a = 'b';
 console.log(a)
 </script>
