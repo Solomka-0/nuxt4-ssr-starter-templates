@@ -4,4 +4,7 @@
   </NuxtLayout>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const a = 'b'
+console.log(a)
+</script>
