@@ -1,75 +1,161 @@
-# Nuxt Minimal Starter
+Шаблон на Nuxt 4 с FSD архитектурой, строгой типизацией. 
+Структура оптимизирована под рост команды, масштабирование и поддержку CI/CD.
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+---
 
-## Setup
+## Особенности
 
-Make sure to install dependencies:
+- Nuxt 4 с поддержкой SSR / SSG / PWA
+- Feature-Sliced & Domain-Driven структура
+- Typescript everywhere (`strict: true`)
+- Выделенный shared/ui-kit, глобальные типы и DTO
+- Строгая организация компонентов, логики и бизнес-кода
+- Готовность к интеграции с реальным backend/API
+- Разделение тестов, моков, скриптов и docker-инфраструктуры
+- Готовность к подключению i18n, CI/CD
+
+---
+
+## Структура проекта
+
+```text
+my-nuxt-app/
+├─ app/
+│  ├─ assets/
+│  ├─ features/
+│  │    ├─ event/
+│  │    │    ├─ components/
+│  │    │    ├─ composables/
+│  │    │    ├─ model.ts
+│  │    │    ├─ store.ts
+│  │    │    └─ api.ts
+│  │    ├─ user/
+│  │    └─ ...
+│  ├─ entities/
+│  │    ├─ event/
+│  │    ├─ user/
+│  │    └─ ...
+│  ├─ widgets/
+│  │    ├─ event-feed/
+│  │    ├─ user-panel/
+│  │    └─ ...
+│  ├─ pages/
+│  │    ├─ event/
+│  │    ├─ index.vue
+│  │    └─ user/
+│  ├─ layouts/
+│  ├─ middleware/
+│  ├─ plugins/
+│  ├─ utils/
+│  ├─ constants/
+│  ├─ app.vue
+│  ├─ app.config.ts
+│  └─ error.vue
+├─ shared/
+│  ├─ ui/
+│  ├─ api/
+│  ├─ lib/
+│  ├─ config/
+│  ├─ types/
+│  ├─ dto/
+│  ├─ locales/
+│  └─ index.ts
+├─ content/
+├─ public/
+│  ├─ favicon.ico
+│  └─ robots.txt
+├─ mocks/
+├─ tests/
+│  ├─ unit/
+│  ├─ e2e/
+│  ├─ fixtures/
+│  ├─ utils/
+│  └─ coverage/
+├─ scripts/
+│  ├─ generate-types.sh
+│  ├─ prepare-locales.js
+│  └─ ...
+├─ docker/
+│  ├─ Dockerfile
+│  └─ docker-compose.yml
+├─ .env
+├─ .env.example
+├─ nuxt.config.ts
+├─ tsconfig.json
+├─ package.json
+├─ .editorconfig
+├─ .eslintrc.cjs
+├─ .eslintignore
+├─ .prettierrc
+├─ .prettierignore
+├─ .gitignore
+├─ README.md
+└─ .github/
+    └─ workflows/
+        ├─ lint.yml
+        ├─ test.yml
+        ├─ deploy.yml
+        └─ preview.yml
+````
+
+---
+
+## Слои и каталоги
+
+* **app/** — основной фронт-код: страницы, layouts, фичи, бизнес-сущности, виджеты, утилиты.
+
+    * **features/** — изолированные бизнес-фичи с компонентами, логикой, api.
+    * **entities/** — базовые сущности, минимальная логика, чистый view/model.
+    * **widgets/** — сложные сцепки из фич/сущностей (например, ленты, дашборды).
+    * **pages/** — Nuxt-роуты (auto-routing), точка входа для страниц.
+    * **layouts/** — шаблоны общего вида.
+    * **constants/** — глобальные константы/фиче-флаги.
+    * **app.vue** — корневой компонент (обязательно содержит `<NuxtPage />`).
+    * **app.config.ts** — глобальные мета-настройки, темизация, PWA.
+    * **error.vue** — глобальная страница ошибок.
+
+* **shared/** — только реально переиспользуемое: ui-kit, типы, dto, глобальные утилиты, настройки, локали.
+
+* **mocks/** — мок-серверы, msw, заглушки API для дев/тестов.
+
+* **tests/** — unit, e2e, fixtures, coverage, тестовые утилиты.
+
+* **scripts/** — генерация тайпингов, подготовка локалей, prebuild-скрипты.
+
+* **docker/** — Dockerfile, docker-compose для унификации dev/prod-среды.
+
+* **.github/workflows/** — CI/CD пайплайны для lint, test, deploy, preview.
+
+---
+
+## Быстрый старт
 
 ```bash
-# npm
+git clone <ссылка на репозиторий> <название проекта>
+cd <название проекта>
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+---
 
-Build the application for production:
+## Основные команды
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm run dev         # локальная разработка
+npm run build       # production-сборка
+npm run lint        # линтер
+npm run test        # unit/e2e тесты
+npm run preview     # предпросмотр production-сборки
 ```
 
-Locally preview production build:
+---
 
-```bash
-# npm
-npm run preview
+## Рекомендации по разработке
 
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+* Всю бизнес-логику и компоненты размещай строго в features/entities/widgets.
+* shared/ui — только реально переиспользуемые элементы (Button, Modal).
+* Не пиши "атомы" ради атомов, не размазывай типы и dto — только в shared.
+* Используй строгую типизацию, храни примеры и тесты рядом с фичами.
+* Для локализации используй shared/locales и dev-скрипты для автосборки.
+* Документируй все решения, поддерживай структуру и порядок — это ускорит работу команды.
