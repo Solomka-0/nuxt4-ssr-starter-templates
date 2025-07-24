@@ -1,0 +1,58 @@
+@mixin bg-primary {
+  @apply bg-primary dark:bg-primary text-white;
+}
+
+@mixin input-base {
+  transition: all ease-in-out 0.1s;
+  @apply py-[4px] px-[8px] w-[100%];
+  @apply text-dark-gray text-[16px];
+  @apply outline outline-[1px] outline-light-gray-secondary rounded;
+
+  &::placeholder {
+    @apply text-light-gray-secondary;
+  }
+
+  &:hover:not(.v-input_error) {
+    transition: all ease-in-out 0.1s;
+    @apply outline-primary;
+  }
+
+  &:focus:not(.v-input_error) {
+    @apply outline-primary outline-2;
+  }
+}
+
+@mixin section-a_width {
+  flex: 50%;
+}
+
+@mixin filter-dark-gray {
+  filter: invert(17%) sepia(23%) saturate(7%) hue-rotate(331deg) brightness(89%)
+    contrast(94%);
+}
+
+@mixin filter-white {
+  filter: invert(100%) sepia(0%) saturate(7451%) hue-rotate(187deg)
+    brightness(113%) contrast(99%);
+}
+
+@mixin scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari и Opera */
+  }
+}
+
+@mixin tile($pre: 0) {
+  @if $pre != 0 {
+    @apply #{$pre}:mr-1 #{$pre}:py-2 #{$pre}:px-3;
+    @apply #{$pre}:rounded-xl #{$pre}:drop-shadow-md;
+    @apply #{$pre}:bg-white #{$pre}:border-r-[2px] #{$pre}:border-solid #{$pre}:border-primary #{$pre}:border-opacity-15;
+  } @else {
+    @apply mr-1 py-2 px-3;
+    @apply rounded-xl drop-shadow-md;
+    @apply bg-white border-r-[2px] border-solid border-primary border-opacity-15;
+  }
+}
