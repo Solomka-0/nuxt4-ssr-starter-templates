@@ -1,0 +1,29 @@
+.sidebar-navigation {
+  @apply bg-grey-98 rounded-2xl p-6 shadow-inner border border-grey-89 w-full max-w-xs;
+  min-width: 360px;
+
+  &__title {
+    @apply text-xs font-bold uppercase text-gray-400 mb-4 tracking-widest select-none;
+    letter-spacing: 0.06em;
+  }
+
+  &__list {
+    @apply flex flex-col gap-2;
+  }
+
+  &__item {
+    @apply flex items-center gap-3 rounded-xl px-3 py-2 text-base font-medium text-gray-700 cursor-pointer transition;
+
+    &:hover:not(.sidebar-navigation__item--active) {
+      @apply bg-gray-50 text-blue-700;
+    }
+
+    &--active {
+      @apply bg-blue-600 text-white shadow-sm;
+    }
+
+    &-icon {
+      @apply text-lg leading-none select-none;
+    }
+  }
+}
