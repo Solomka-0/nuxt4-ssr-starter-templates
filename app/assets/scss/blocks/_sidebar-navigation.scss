@@ -1,9 +1,9 @@
 .sidebar-navigation {
-  @apply bg-grey-98 rounded-2xl p-6 shadow-inner border border-grey-89 w-full max-w-xs;
-  min-width: 360px;
+  @apply bg-transparent rounded-2xl p-6;
 
   &__title {
     @apply text-xs font-bold uppercase text-gray-400 mb-4 tracking-widest select-none;
+    @apply dark:text-[#A1A8B8];
     letter-spacing: 0.06em;
   }
 
@@ -12,14 +12,17 @@
   }
 
   &__item {
-    @apply flex items-center gap-3 rounded-xl px-3 py-2 text-base font-medium text-gray-700 cursor-pointer transition;
+    @apply flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium text-grey-46 cursor-pointer transition-colors duration-200 select-none;
+    @apply dark:text-[#E6EAF2] dark:bg-transparent;
 
     &:hover:not(.sidebar-navigation__item--active) {
-      @apply bg-gray-50 text-blue-700;
+      @apply bg-blue-50 text-primary;
+      @apply dark:bg-azure-21 dark:text-azure-67;
     }
 
     &--active {
-      @apply bg-blue-600 text-white shadow-sm;
+      @apply bg-primary text-white shadow-sm;
+      @apply dark:bg-azure-67 dark:text-azure-11;
     }
 
     &-icon {

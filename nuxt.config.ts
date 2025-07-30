@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     'nuxt-monaco-editor',
   ],
   pages: true,
-  css: ['@/assets/scss/main.scss'],
+  css: ['@/assets/tailwind.css', '@/assets/scss/main.scss'],
   colorMode: {
     classSuffix: '',
   },
