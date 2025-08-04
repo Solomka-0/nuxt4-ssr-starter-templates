@@ -41,7 +41,8 @@
 <style scoped>
 .app-footer {
   @apply pt-6 pb-2 px-8 select-none border-t border border-solid font-sans;
-  @apply bg-azure-11 border-azure-21;
+  @apply border-grey-89 bg-grey-98;
+  @apply dark:bg-azure-11 dark:border-azure-21;
 
   &__content {
     @apply flex flex-row justify-evenly mb-2 max-w-[1865px] mx-auto;
@@ -52,7 +53,7 @@
   }
 
   &__title {
-    @apply font-bold text-[16px] mb-2 text-[#E6EAF2];
+    @apply font-bold text-[16px] mb-2 dark:text-[#E6EAF2];
   }
 
   ul {
@@ -73,7 +74,7 @@
   }
 
   &__divider {
-    @apply w-full border-t border-azure-21 mb-3;
+    @apply w-full border-t dark:border-azure-21 mb-3;
   }
 
   &__copyright {

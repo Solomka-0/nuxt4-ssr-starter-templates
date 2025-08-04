@@ -1,12 +1,12 @@
 .layout {
   &--dashboard {
     @apply min-h-screen flex flex-col;
-    @apply bg-grey-98 dark:bg-azure-7;
+    @apply bg-white dark:bg-azure-7;
   }
 
   &__body {
     @apply flex flex-1 gap-8 w-full p-8;
-    @apply bg-transparent; // фон задаёт родитель
+    @apply bg-transparent;
   }
 
   &__sidebar {

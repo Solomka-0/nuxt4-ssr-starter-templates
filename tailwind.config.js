@@ -10,6 +10,7 @@ export default {
           93: '#E9ECEF',
           46: '#6C757D',
           89: '#DEE2E6',
+          96: '#F0F6FC',
         },
         azure: {
           7: '#0D1117',
